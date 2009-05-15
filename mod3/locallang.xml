@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;user_txt3designkitM2&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Design Manager</label>
+			<label index="page">Page</label>
+			<label index="TabLabel1">Download design</label>
+			<label index="TabLabel2">Adjust settings</label>
+			<label index="TabLabel3">Preview design</label>
+			<label index="TabLabel4">Create templates</label>
+			<label index="function1">Function #1</label>
+			<label index="function2">Function #2</label>
+			<label index="function3">Function #3</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title">Design Manager</label>
+			<label index="page">Seite</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,347 @@
+var red = new Number();
+var green = new Number();
+var blue = new Number();
+var hue = new Number();
+var sat = new Number();
+var lum = new Number();
+
+function triggerTab(triggerItem,triggeredContent) {
+    allTriggers = triggerItem.parentNode.parentNode.getElementsByTagName("li");
+    countTriggers = allTriggers.length;
+    for(i=1;i<=countTriggers;i++) {
+	if(i>triggeredContent) {
+	    allTriggers[i-1].className = "redbutton";
+	} else {
+	    allTriggers[i-1].className = "greenbutton";	
+	}
+	document.getElementById("tabcontent" + i).className = "tabcontent_off";
+    }
+    document.getElementById("tabcontent" + triggeredContent).className = "tabcontent_on";
+    triggerItem.blur();
+}
+
+function setHexValManually(triggerItem) {
+    alert(this.value);
+}
+
+Ext.ux.SliderTip = Ext.extend(Ext.Tip, {
+    minWidth:10,
+    height:10,
+    offsets: [0, -5],
+    init: function(slider){
+	slider.on('dragstart', this.onSlide, this);
+	slider.on('drag', this.onSlide, this);
+	slider.on('dragend', this.hide, this);
+	slider.on('destroy', this.destroy, this);
+    },
+    onSlide:function(slider){
+	this.show();
+	this.body.update(this.getText(slider));
+	this.doAutoWidth();
+	this.el.alignTo(slider.thumb, 'b-t?', this.offsets);
+    },
+    getText: function(slider){
+	if(this.unit) {
+	    return slider.getValue() + this.unit;
+	} else if (this.hexValue) {
+	    hexValue = slider.getValue().toString(16);
+	    if (slider.getValue()<16) {
+		hexValue = '0'+hexValue;
+	    }
+	    return hexValue.toUpperCase() ;	
+	} else {
+	    return slider.getValue();	
+	}
+    }
+});
+
+Ext.ux.ColorChange = Ext.extend(Ext.Tip, {
+    init: function(slider){
+	slider.on('dragstart', this.onSlide, this);
+	slider.on('drag', this.onSlide, this);
+	slider.on('dragend', this.hide, this);
+	slider.on('destroy', this.destroy, this);
+    },
+    onSlide:function(slider){
+	el = document.getElementById(slider.id).parentNode.firstChild.nextSibling;
+	currentRGB = el.style.backgroundColor;
+	currentRGB = currentRGB.replace(/[^0-9,]/g,'');	
+	currentColors = currentRGB.split(',');
+	red = this.masterTrigger=='red' ? slider.getValue() : (red ? red : 0);
+	green = this.masterTrigger=='green' ? slider.getValue() : (green ? green : 0);
+	blue = this.masterTrigger=='blue' ? slider.getValue() : (blue ? blue : 0);
+	hue = this.masterTrigger=='hue' ? slider.getValue() : (hue ? hue : 0);
+	sat = this.masterTrigger=='sat' ? slider.getValue() : (sat ? sat : 0);
+	lum = this.masterTrigger=='lum' ? slider.getValue() : (lum ? lum : 0);
+	
+	if(this.masterTrigger=='red' || this.masterTrigger=='green' || this.masterTrigger=='blue') {
+	    min = Math.min(red, green);
+	    min = Math.min(min, blue);
+	    max = Math.max(red, green);
+	    max = Math.max(max, blue);
+	    delta = (max-min);
+	    hueCalc = 0;
+	    satCalc = 0;
+	    lumCalc = 0;
+	    if(max != 0) {
+		lumCalc = (max + min) / 2 / 2.55;
+		satCalc = delta / max;
+		if(delta != 0) {
+		    if(red==max) {
+			hueCalc = (green - blue) / delta;
+		    } else if (green==max) {
+			hueCalc = 2 + ((blue - red) / delta);
+		    } else {
+			hueCalc = 4 + ((red - green) / delta);
+		    }
+		}
+		hueCalc = hueCalc * 60;
+		if(hueCalc < 0) {
+		    hueCalc = hueCalc + 360;
+		}
+	    }
+	    hue = Math.round(hueCalc);
+	    sat = Math.round(satCalc * 100);
+	    lum = Math.round(lumCalc);
+	    Ext.getCmp('hueslider').setValue(hue, false);
+	    Ext.getCmp('satslider').setValue(sat, false);
+	    Ext.getCmp('lumslider').setValue(lum, false);
+	}
+	
+	if(this.masterTrigger=='hue' || this.masterTrigger=='sat' || this.masterTrigger=='lum') {
+	    if(hue==360) {
+		hue2 = 0;
+	    } else {
+		hue2 = hue;
+	    }
+	    hueCalc = hue2/60;
+	    if(hueCalc>=5) {
+		hueCalc = hueCalc -6;
+	    }
+	    satCalc = sat / 100;
+	    if(lum<=50) {
+		delta = satCalc*lum*2;
+	    } else if (!(hue2==0 && satCalc==0)){
+		delta = satCalc*(200-2*lum);
+	    } else {
+		delta = 0;
+	    }
+	    min = (2*lum - delta)/2;
+	    max = delta + min;
+	    
+	    if(hue2<=60 || hue2>=300) {
+		delta2 = hueCalc*delta;
+		med = min + Math.abs(delta2);
+		red = max;
+		if(delta2<0) {
+		    blue = med;
+		    green = min;
+		} else {
+		    green = med;
+		    blue = min;
+		}
+	    } else if(hue2>=180 && hue2<=300) {
+		delta2 = hueCalc*delta - 4*delta;
+		med = min + Math.abs(delta2);
+		blue = max;
+		if(delta2<0) {
+		    green = med;
+		    red = min;
+		} else {
+		    red = med;
+		    green = min;
+		}
+	    } else if(hue2>=60 && hue2<=180) {
+		delta2 = hueCalc*delta - 2*delta;
+		med = min + Math.abs(delta2);
+		green = max;
+		if(delta2<0) {
+		    red = med;
+		    blue = min;
+		} else {
+		    blue = med;
+		    red = min;
+		}
+	    }
+	    red = Math.round(red*2.55);
+	    green = Math.round(green*2.55);
+	    blue = Math.round(blue*2.55);	    
+	    Ext.getCmp('redslider').setValue(red, false);
+	    Ext.getCmp('greenslider').setValue(green, false);
+	    Ext.getCmp('blueslider').setValue(blue, false);
+	}
+	
+	
+	newRGB = 'rgb(' + red + ',' + green + ',' + blue + ')';
+	Ext.getCmp('colorfield').body.setStyle('background-color', newRGB); 
+	newHexValue = '#' 
+	    + (red>15  ?  red.toString(16).toUpperCase() : '0'+red.toString(16).toUpperCase()) 
+	    + (green>15 ? green.toString(16).toUpperCase() : '0'+green.toString(16).toUpperCase()) 
+	    + (blue>15 ? blue.toString(16).toUpperCase() : '0'+blue.toString(16).toUpperCase());
+	document.getElementById('colorfield').nextSibling.value = newHexValue;
+    }
+});
+
+Ext.ux.ColorSlider = Ext.extend(Ext.Panel, {
+    width:202,
+    height:142,
+    frame:true,
+    shadow:true,
+    initComponent:function() {
+	var config = {
+	    header:true,
+	    footer:true,
+	    title: 'Color Picker',
+	    items: [
+	    
+		new Ext.Slider({
+		    height:100,
+		    vertical:true,
+		    id:'hueslider',
+		    cls:'hueslider',
+		    minValue:0,
+		    maxValue:360,
+		    value:hue,
+		    plugins:[
+			new Ext.ux.SliderTip(),
+			new Ext.ux.ColorChange({
+			    masterTrigger:'hue'
+			}),
+		    ]
+		}),
+		
+		{
+		    autoEl:{
+			tag:'div'
+		    },
+		    id:'colorfield',
+		    cls:'colorfield',
+		    style:'background-color:rgb(' 
+			+ red + ',' 
+			+ green + ',' 
+			+ blue + ');',		
+		    width:100,
+		    height:87
+		},
+		
+		{
+		    autoEl:{
+			tag:'input',
+			value:'#' 
+			    + (red>15 ?  red.toString(16).toUpperCase() : '0'+red.toString(16).toUpperCase()) 
+			    + (green>15 ? green.toString(16).toUpperCase() : '0'+green.toString(16).toUpperCase()) 
+			    + (blue>15 ? blue.toString(16).toUpperCase() : '0'+blue.toString(16).toUpperCase()),
+		    },
+		    id:'hexvalue',
+		    cls:'hexvalue'
+		},
+		
+		new Ext.Slider({
+		    height:100,
+		    vertical:true,
+		    id:'satslider',
+		    cls:'satslider',
+		    minValue:0,
+		    maxValue:100,
+		    value:sat,
+		    plugins:[
+			new Ext.ux.SliderTip({
+			    unit:'%'
+			}),
+			new Ext.ux.ColorChange({
+			    masterTrigger:'sat'
+			}),
+		    ]
+		}),		
+		
+		new Ext.Slider({
+		    width:100,
+		    id:'lumslider',
+		    cls:'lumslider',
+		    minValue:0,
+		    maxValue:100,
+		    value:lum,
+		    plugins:[
+			new Ext.ux.SliderTip({
+			    unit:'%'
+			}),
+			new Ext.ux.ColorChange({
+			    masterTrigger:'lum'
+			}),
+		    ]
+		}),		
+		
+		new Ext.Slider({
+		    height:100,
+		    vertical:true,
+		    id:'redslider',
+		    cls:'redslider',
+		    minValue:0,
+		    maxValue:255,
+		    value:red,
+		    plugins:[
+			new Ext.ux.SliderTip({
+			    hexValue:true
+			}),
+			new Ext.ux.ColorChange({
+			    masterTrigger:'red'
+			}),
+		    ]
+		}),		
+		
+		new Ext.Slider({
+		    height:100,
+		    vertical:true,
+		    id:'greenslider',
+		    cls:'greenslider',
+		    minValue:0,
+		    maxValue:255,
+		    value:green,
+		    plugins:[
+			new Ext.ux.SliderTip({
+			    hexValue:true
+			}),
+			new Ext.ux.ColorChange({
+			    masterTrigger:'green'
+			}),
+		    ]
+		}),		
+		
+		new Ext.Slider({
+		    height:100,
+		    vertical:true,
+		    id:'blueslider',
+		    cls:'blueslider',
+		    minValue:0,
+		    maxValue:255,
+		    value:blue,
+		    plugins:[
+			new Ext.ux.SliderTip({
+			    hexValue:true
+			}),
+			new Ext.ux.ColorChange({
+			    masterTrigger:'blue'
+			}),
+		    ]
+		}),		
+		
+	    ],
+	};
+	
+	Ext.apply(this, config);
+	Ext.apply(this.initialConfig, config);
+
+	Ext.ux.ColorSlider.superclass.initComponent.apply(this);
+	
+    }
+
+});
+
+
+Ext.reg('ColorSlider', Ext.ux.ColorSlider);
+
+Ext.onReady(function(){
+    top.colorslider = new Ext.ux.ColorSlider({
+        renderTo:'colorslider'
+    });
+});

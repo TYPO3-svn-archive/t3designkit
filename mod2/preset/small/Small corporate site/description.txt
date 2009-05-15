@@ -1,0 +1,1 @@
+A small site for a company. 3 Levels deep with 6 pages on the first and 4 pages on the second level. Contains basic stuff like products, references and news as well as a page for the sitemap and a communication area with contact and imprint.

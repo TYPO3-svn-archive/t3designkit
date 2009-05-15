@@ -1,0 +1,219 @@
+<phparray>
+	<pagetree type="array">
+		<numIndex index="0">1</numIndex>
+		<numIndex index="1">6</numIndex>
+		<numIndex index="2">4</numIndex>
+		<numIndex index="3"></numIndex>
+	</pagetree>
+	<setPageType>1</setPageType>
+	<page type="array">
+		<numIndex index="1" type="array">
+			<title type="array">
+				<lang type="array">
+					<default>Home</default>
+				</lang>
+			</title>
+			<type>1</type>
+			<numIndex index="1" type="array">
+				<title type="array">
+					<lang type="array">
+						<default>About us</default>
+					</lang>
+				</title>
+				<type>4</type>
+				<numIndex index="1" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Company</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="2" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Locations</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="3" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>History</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="4" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Team</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+			</numIndex>
+			<numIndex index="2" type="array">
+				<title type="array">
+					<lang type="array">
+						<default>Products</default>
+					</lang>
+				</title>
+				<type>4</type>
+				<numIndex index="1" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Product 1</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="2" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Product 2</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="3" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Product 3</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="4" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Product 4</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+			</numIndex>
+			<numIndex index="3" type="array">
+				<title type="array">
+					<lang type="array">
+						<default>References</default>
+					</lang>
+				</title>
+				<type>4</type>
+				<numIndex index="1" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Reference 1</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="2" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Reference 2</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="3" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Reference 3</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="4" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Reference 4</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+			</numIndex>
+			<numIndex index="4" type="array">
+				<title type="array">
+					<lang type="array">
+						<default>News</default>
+					</lang>
+				</title>
+				<type>4</type>
+				<numIndex index="1" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Press Releases</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="2" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Media Coverage</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="3" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Downloads</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="4" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Press Contact</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+			</numIndex>
+			<numIndex index="5" type="array">
+				<title type="array">
+					<lang type="array">
+						<default>Sitemap</default>
+					</lang>
+				</title>
+				<type>1</type>
+			</numIndex>
+			<numIndex index="6" type="array">
+				<title type="array">
+					<lang type="array">
+						<default>Communication</default>
+					</lang>
+				</title>
+				<type>4</type>
+				<numIndex index="1" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Contact</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="2" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Imprint</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+				<numIndex index="3" type="array">
+					<title type="array">
+						<lang type="array">
+							<default>Terms and Conditions</default>
+						</lang>
+					</title>
+					<type>1</type>
+				</numIndex>
+			</numIndex>
+		</numIndex>
+	</page>
+</phparray>

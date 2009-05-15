@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;web_txt3designkitM3&quot; - header, description</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mlang_tabs_tab">Design Manager</label>
+			<label index="mlang_labels_tabdescr">Import lots of different designs available at t3.designkit.org and modify them to your needs using a sophisticated backend user interface</label>
+			<label index="mlang_labels_tablabel">Import or modify a design kit</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Design-Manager</label>
+			<label index="mlang_labels_tabdescr">Importieren Sie eine Vielzahl von Designs, die unter t3.designkit.org zum Download bereitstehen und modifizieren Sie diese mit Hilfe eines ausgefeilten Backend User Interface.</label>
+			<label index="mlang_labels_tablabel">Importieren oder modifzieren Sie ein Design Kit</label>
+		</languageKey>
+	</data>
+</T3locallang>
