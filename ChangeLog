@@ -1,0 +1,6 @@
+09-05-08 JoH asenau  <jh@eqony.com>
+
+	* Initial release of the page tree wizard
+	* which will run on TYPO3 4.2
+	* future releases will contain the design manager
+	* and require TYPO3 4.3
